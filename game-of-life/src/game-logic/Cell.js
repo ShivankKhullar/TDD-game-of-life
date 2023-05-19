@@ -1,4 +1,4 @@
-import CellState from "./../game-logic/CellState.js";
+import CellState from "./CellState.js";
 
 export default class Cell{
     constructor (state) {

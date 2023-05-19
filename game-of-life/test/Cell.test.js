@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
-import CellState from '../game-logic/CellState.js';
-import Cell from '../game-logic/Cell.js';
+import CellState from '../src/game-logic/CellState.js';
+import Cell from '../src/game-logic/Cell.js';
 
 describe('Cell', ()=>{
     it('Should be initailized with a cellState' ,() => {
