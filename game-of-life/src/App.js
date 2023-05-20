@@ -6,8 +6,8 @@ function App() {
     <>
     <div className="App">
       <h1 className='main-heading'>Conway's Game Of Life</h1>
-    </div>
     <GameTable/>
+    </div>
   </>
   );
 }

@@ -55,7 +55,7 @@ function GameTable() {
   };
 
   return (
-    <>
+    <div className='main-container'>
     <div className='table-container'>
       <table>
         <tbody>
@@ -74,9 +74,9 @@ function GameTable() {
       </table>
     </div>
     <div className='buttons'>
-      <button onClick={updateGameState}>Next State</button>
+      <button onClick={updateGameState}><span>&#8631;</span></button>
     </div>
-    </>
+    </div>
   );
 }
 
