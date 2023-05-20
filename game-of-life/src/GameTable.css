@@ -33,6 +33,11 @@ button {
     height: 3rem; /* Fixed height */
 }
 
+.button-containers {
+    display: flex;
+    flex-direction: column;
+  }
+
 button:hover {
     box-shadow: 2px 2px 2px 2px rgba(238,174,202,1); /* This creates a soft glow around the button */
 }

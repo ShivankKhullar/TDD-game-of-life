@@ -1,13 +1,13 @@
 /* eslint-disable */
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect} from 'react';
 import './GameTable.css';
 import CellState from './game-logic/CellState';
 import Cell from './game-logic/Cell';
 import Game from './game-logic/Game';
 
 const { ALIVE, DEAD } = CellState;
-const initialGameState = [
+const glider = [
   [DEAD, DEAD, DEAD, DEAD, DEAD, ...Array(15).fill(DEAD)],
   [DEAD, DEAD, ALIVE, DEAD, DEAD, ...Array(15).fill(DEAD)],
   [DEAD, DEAD, DEAD, ALIVE, DEAD, ...Array(15).fill(DEAD)],
@@ -16,12 +16,32 @@ const initialGameState = [
   ...Array(15).fill([...Array(20).fill(DEAD)]),
 ];
 
-function GameTable() {
-  const game = useRef(new Game(initialGameState)).current;
+const bigBoard = [
+  ...Array(36).fill([...Array(36).fill(DEAD)]),
+];
 
-  const [gameState, setGameState] = useState({
-    cells: game.state
-  });
+const smallBoard = [
+  ...Array(15).fill([...Array(15).fill(DEAD)]),
+];
+
+
+function GameTable() {
+  const game = useRef(new Game(glider)).current;
+  const [isPlaying, setIsPlaying] = useState(false);
+  const gameInterval = useRef(null);
+  const [gameState, setGameState] = useState({cells: game.state});
+
+  useEffect(() => {
+    if (isPlaying) {
+      gameInterval.current = setInterval(updateGameState, 300);
+    } else {
+      clearInterval(gameInterval.current);
+    }
+    
+    return () => clearInterval(gameInterval.current);
+  }, [isPlaying]);
+
+  const handlePlayClick = () => setIsPlaying(!isPlaying);
 
   const updateGameState = () => {
     game.nextState();
@@ -54,6 +74,11 @@ function GameTable() {
     });
   };
 
+  const clearGameState = () => {
+    game.clearState();
+    setGameState({ cells: game.state, isPlaying: false });
+  };
+
   return (
     <div className='main-container'>
     <div className='table-container'>
@@ -73,8 +98,22 @@ function GameTable() {
         </tbody>
       </table>
     </div>
-    <div className='buttons'>
+    <div className='button-containers'>
+      <button onClick={handlePlayClick}>
+          {isPlaying ? <span>&#9632;</span> : <span>&#9658;</span>}
+        </button>
       <button onClick={updateGameState}><span>&#8631;</span></button>
+      <button onClick={clearGameState}><span>&#215;</span></button>
+      <button onClick={() => {
+        game.setState(glider);
+        setGameState({ cells: game.getState() }); }}>
+        <span>&#128640;</span>
+        </button>
+      <button onClick={() => {
+        game.setState(bigBoard);
+        setGameState({ cells: game.getState() }); }}>
+        <span>&#43;</span>
+        </button>
     </div>
     </div>
   );

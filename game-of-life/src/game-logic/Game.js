@@ -1,6 +1,8 @@
 import CellState from "./CellState"
 import Cell from "./Cell";
 
+const {DEAD} = CellState;
+
 export default class Game{
     
     constructor(state){
@@ -19,6 +21,11 @@ export default class Game{
 
     getCell(row,col){
         return this.state[row][col];
+    }
+
+    clearState() {
+      // Set all cells in this.state to DEAD
+      this.state = this.state.map(row => row.map(cell => new Cell(DEAD)));
     }
 
     toggleCell(row, col){
