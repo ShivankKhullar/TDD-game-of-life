@@ -173,7 +173,8 @@ describe('Game Of Life', () => {
         ];
         const game = new Game(gameState);
     
-        const nextState = game.nextState();
+        game.nextState();
+        const nextState = game.getState();
     
         const expectedState = [
           [new Cell(DEAD), new Cell(DEAD), new Cell(DEAD), new Cell(DEAD), new Cell(DEAD)],
@@ -188,7 +189,7 @@ describe('Game Of Life', () => {
 
       // Additional Requirements for the front end
 
-      it('Should flip state of given cell, when toggel function is used', () => {
+      it('Should flip state of given cell, when toggelCell function is used', () => {
         const gameState = [
           [DEAD, DEAD, DEAD, DEAD, DEAD],
           [DEAD, DEAD, DEAD, DEAD, DEAD],
@@ -197,8 +198,8 @@ describe('Game Of Life', () => {
           [DEAD, DEAD, DEAD, DEAD, DEAD],
         ];
         const game = new Game(gameState);
-    
-        const nextState = game.toggleCell(2,2);
+        game.toggleCell(2,2);
+        const nextState = game.getState();
     
         const expectedState = [
           [new Cell(DEAD), new Cell(DEAD), new Cell(DEAD), new Cell(DEAD), new Cell(DEAD)],

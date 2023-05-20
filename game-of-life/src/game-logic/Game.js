@@ -9,15 +9,26 @@ export default class Game{
         this.state = state.map(row => row.map(cellState => new Cell(cellState)));
     }
 
+    getState(){
+      return this.state
+    }
+
+    setState(newState){
+      this.state = newState.map(row => row.map(cellState => new Cell(cellState)));
+    }
+
     getCell(row,col){
         return this.state[row][col];
     }
 
-    toggleCell(row,col){
-      currentState = this.state[row][col];
+    toggleCell(row, col){
+      const currentCell = this.getCell(row, col);
+      const newState = currentCell.state === CellState.ALIVE ? CellState.DEAD : CellState.ALIVE;
+      currentCell.setCellState(newState);
 
-      return currentState;
-    } 
+      // Update game state
+      this.state = [...this.state]; // Just a good practice, have a look at spread operator if you forget why you did this.
+  } 
 
     getNumOfAliveNeighbors(row, col){
         const stateValues = {
@@ -42,10 +53,19 @@ export default class Game{
     }
 
     nextState() {
-        return this.state.map((row, rowNum) => row.map(
-          (cell, colNum) => new Cell(
-            cell.getNextState(this.getNumOfAliveNeighbors(rowNum, colNum)),
-          ),
-        ));
+      const newState = this.state.map((row, rowNum) => {
+          return row.map((cell, colNum) => {
+              return cell.getNextState(this.getNumOfAliveNeighbors(rowNum, colNum));
+          });
+      });
+  
+      for(let i = 0; i < this.state.length; i++) {
+          for(let j = 0; j < this.state[i].length; j++) {
+              this.state[i][j].setCellState(newState[i][j]);
+          }
       }
+  
+      // This line ensures that any React components using this state will re-render.
+      this.state = [...this.state];
+  }
 }

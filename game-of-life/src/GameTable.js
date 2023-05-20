@@ -24,7 +24,8 @@ function GameTable() {
   });
 
   const updateGameState = () => {
-    const nextState = game.nextState();
+    game.nextState();
+    const nextState = game.getState();
     game.state = nextState;
     setGameState({
       cells: nextState
@@ -54,6 +55,7 @@ function GameTable() {
   };
 
   return (
+    <>
     <div className='table-container'>
       <table>
         <tbody>
@@ -70,8 +72,11 @@ function GameTable() {
           ))}
         </tbody>
       </table>
+    </div>
+    <div className='buttons'>
       <button onClick={updateGameState}>Next State</button>
     </div>
+    </>
   );
 }
 
