@@ -186,6 +186,32 @@ describe('Game Of Life', () => {
         expect(nextState).to.deep.equal(expectedState);
       });
 
+      // Additional Requirements for the front end
+
+      it('Should flip state of given cell, when toggel function is used', () => {
+        const gameState = [
+          [DEAD, DEAD, DEAD, DEAD, DEAD],
+          [DEAD, DEAD, DEAD, DEAD, DEAD],
+          [DEAD, ALIVE, ALIVE, ALIVE, DEAD],
+          [DEAD, DEAD, DEAD, DEAD, DEAD],
+          [DEAD, DEAD, DEAD, DEAD, DEAD],
+        ];
+        const game = new Game(gameState);
+    
+        const nextState = game.toggleCell(2,2);
+    
+        const expectedState = [
+          [new Cell(DEAD), new Cell(DEAD), new Cell(DEAD), new Cell(DEAD), new Cell(DEAD)],
+          [new Cell(DEAD), new Cell(DEAD), new Cell(DEAD), new Cell(DEAD), new Cell(DEAD)],
+          [new Cell(DEAD), new Cell(ALIVE), new Cell(DEAD), new Cell(ALIVE), new Cell(DEAD)],
+          [new Cell(DEAD), new Cell(DEAD), new Cell(DEAD), new Cell(DEAD), new Cell(DEAD)],
+          [new Cell(DEAD), new Cell(DEAD), new Cell(DEAD), new Cell(DEAD), new Cell(DEAD)],
+        ];
+    
+        expect(nextState).to.deep.equal(expectedState);
+      });
+
+
 
 
 });

@@ -13,6 +13,12 @@ export default class Game{
         return this.state[row][col];
     }
 
+    toggleCell(row,col){
+      currentState = this.state[row][col];
+
+      return currentState;
+    } 
+
     getNumOfAliveNeighbors(row, col){
         const stateValues = {
             [CellState.ALIVE]: 1,

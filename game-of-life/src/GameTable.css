@@ -1,0 +1,22 @@
+.table-container{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+table {
+    /* width: 80%; */
+    height: 80%;
+}
+
+.dead, .alive {
+    outline: 1px solid slategrey;
+    width: 2rem;
+    height: 2rem;
+}
+
+.alive {
+    background-color: salmon;
+}
