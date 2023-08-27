@@ -4,6 +4,7 @@ import GameTable from './GameTable';
 function App() {
   return (
     <>
+    <title>Game Of Life</title>
     <div className="App">
       <h1 className='main-heading'>Shivank's Game Of Life</h1>
     <GameTable/>
