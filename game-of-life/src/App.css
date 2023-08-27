@@ -16,5 +16,46 @@ h1{
   color: seashell;
   margin-top: 0px;
   padding-top: 15px;
+  margin-bottom: 0px;
+}
+
+.header-links {
+  margin: .5rem 0; /* Add some margin for spacing */
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.header-links a {
+  color: seashell;
+  text-decoration: none;
+  font-size: 14px; /* Slightly smaller font size to differentiate from the main heading */
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.3s;
+  margin: .5rem;
+}
+
+.header-links a:hover {
+  color: #005a8e;
+}
+
+/* Media Queries for Mobile */
+@media (max-width: 768px) {
+  .header-links {
+    flex-direction: row; /* Display icons in a single row */
+    justify-content: center; /* Center the icons */
+    gap: 20px; /* Increase the gap for better spacing between icons */
+  }
+
+  .header-links a {
+    font-size: 20px; /* Increase the icon size for better visibility */
+  }
+
+  .header-links a span {
+    display: none; /* Hide the text next to the icons */
+  }
 }
 
