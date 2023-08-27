@@ -65,26 +65,6 @@ function GameTable() {
       cells: nextState
     });
     
-
-    // setGameState((prevState) => {
-    //   let updated = false;
-    //   const updatedCells = prevState.cells.map((cellRow, rowNum) =>
-    //     cellRow.map((cell, colNum) => {
-    //       if (rowNum === row && colNum === column && cell.state === ALIVE) {
-    //         updated = true;
-    //         return new Cell(DEAD);
-    //       } else if (rowNum === row && colNum === column && cell.state === DEAD) {
-    //         updated = true;
-    //         return new Cell(ALIVE);
-    //       }
-    //       return cell;
-    //     })
-    //   );
-    //   if (updated) {
-    //     game.state = updatedCells;
-    //   }
-    //   return updated ? { cells: updatedCells } : prevState;
-    // });
   };
 
   const clearGameState = () => {
@@ -94,40 +74,45 @@ function GameTable() {
 
   return (
     <div className='main-container'>
-    <div className='table-container'>
-      <table>
-        <tbody>
-          {gameState.cells.map((row, rowIndex) => (
-            <tr key={rowIndex}>
-              {row.map((cellState, columnIndex) => (
-                <td
-                  key={columnIndex}
-                  className={cellState.state === CellState.ALIVE ? 'alive' : 'dead'}
-                  onClick={() => toggleState(rowIndex, columnIndex)}
-                />
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-    <div className='button-containers'>
-      <button onClick={handlePlayClick}>
-          {isPlaying ? <span>&#9632;</span> : <span>&#9658;</span>}
+      <div className='table-container'>
+        <table>
+          <tbody>
+            {gameState.cells.map((row, rowIndex) => (
+              <tr key={rowIndex}>
+                {row.map((cellState, columnIndex) => (
+                  <td
+                    key={columnIndex}
+                    className={cellState.state === CellState.ALIVE ? 'alive' : 'dead'}
+                    onClick={() => toggleState(rowIndex, columnIndex)}
+                  />
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className='button-containers'>
+        <button onClick={handlePlayClick}>
+            {isPlaying ? <span>&#9632;</span> : <span>&#9658;</span>}
+          </button>
+        <button onClick={updateGameState}><span>&#8631;</span></button>
+        <button onClick={clearGameState}><span>&#215;</span></button>
+        <button onClick={() => {
+          game.setState(glider);
+          setGameState({ cells: game.getState() }); }}>
+          <span>&#128640;</span> {/* Rocket Button  */}
+          </button>
+        <button onClick={() => {
+          game.setState(bigBoard);
+          setGameState({ cells: game.getState() }); }}>
+          <span>&#43;</span> {/* Plus button  */}
         </button>
-      <button onClick={updateGameState}><span>&#8631;</span></button>
-      <button onClick={clearGameState}><span>&#215;</span></button>
-      <button onClick={() => {
-        game.setState(glider);
-        setGameState({ cells: game.getState() }); }}>
-        <span>&#128640;</span>
+        <button onClick={() => {
+          game.setState(smallBoard);
+          setGameState({ cells: game.getState() }); }}>
+          <span>&#8722;</span> {/* Minus button  */}
         </button>
-      <button onClick={() => {
-        game.setState(bigBoard);
-        setGameState({ cells: game.getState() }); }}>
-        <span>&#43;</span>
-        </button>
-    </div>
+      </div>
     </div>
   );
 }
