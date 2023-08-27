@@ -2,8 +2,6 @@
 
 Experience this project in action! Check out the live demo [here](https://tdd-game-of-life.vercel.app/). 
 
-Certainly! Let's incorporate the "Test Driven Development (TDD)" section into the main README:
-
 This project showcases the implementation of Conway's Game of Life using Test Driven Development (TDD). The game logic was built out using TDD principles, with Mocha as the testing framework and Chai.js for assertions. Additionally, React was utilized for the visualization of the game, providing an interactive and dynamic user experience.
 
 ## Table of Contents
@@ -18,7 +16,7 @@ This project showcases the implementation of Conway's Game of Life using Test Dr
 
 ## Why This Project?
 
-I embarked on this personal project to delve deeper into the world of Test Driven Development (TDD) and to explore the capabilities of React for visualization. TDD is a software development process where you write tests for your code before writing the actual code. This project served as a practical exercise to understand the nuances and benefits of TDD.
+I embarked on this personal project to delve deeper into the world of Test Driven Development (TDD). TDD is a software development process where you write tests for your code before writing the actual code. This project served as a practical exercise to understand the nuances and benefits of TDD.
 
 ## Test Driven Development (TDD)
 
@@ -79,3 +77,5 @@ Conway's Game of Life is a cellular automaton devised by the British mathematici
 2. Install dependencies using `npm install`.
 3. Run tests using `npm test`.
 4. Start the React app using `npm start`.
+
+Thanks to [Coding Garden](https://github.com/CodingGarden) for the initial guidance on this project.
