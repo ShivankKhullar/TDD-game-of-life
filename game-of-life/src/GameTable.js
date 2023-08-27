@@ -6,6 +6,8 @@ import CellState from './game-logic/CellState';
 import Cell from './game-logic/Cell';
 import Game from './game-logic/Game';
 
+
+
 const { ALIVE, DEAD } = CellState;
 const glider = [
   [DEAD, DEAD, DEAD, DEAD, DEAD, ...Array(25).fill(DEAD)],
@@ -26,12 +28,29 @@ const bigBoard = [
 ];
 
 const smallBoard = [
-  ...Array(15).fill([...Array(15).fill(DEAD)]),
+  ...Array(20).fill([...Array(17).fill(DEAD)]),
 ];
 
 
 function GameTable() {
-  const game = useRef(new Game(glider)).current;
+  const [boardSize, setBoardSize] = useState(window.innerWidth <= 768 ? 'small' : 'big');
+  useEffect(() => {
+    const handleResize = () => {
+      setBoardSize(prevSize => {
+        const newSize = window.innerWidth <= 768 ? 'small' : 'big';
+        return newSize;
+      });
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const game = useRef(new Game(boardSize === 'small' ? smallBoard : glider)).current;
+
   const [isPlaying, setIsPlaying] = useState(false);
   const gameInterval = useRef(null);
   const [gameState, setGameState] = useState({cells: game.state});
@@ -84,6 +103,10 @@ function GameTable() {
                     key={columnIndex}
                     className={cellState.state === CellState.ALIVE ? 'alive' : 'dead'}
                     onClick={() => toggleState(rowIndex, columnIndex)}
+                    onTouchEnd={(e) => {
+                      e.preventDefault(); // Prevent any default behavior
+                      toggleState(rowIndex, columnIndex);
+                    }}
                   />
                 ))}
               </tr>
