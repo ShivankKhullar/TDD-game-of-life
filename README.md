@@ -1,5 +1,7 @@
 # Test Driven Development - Game of Life
 
+Experience this project in action! Check out the live demo [here](https://tdd-game-of-life.vercel.app/). 
+
 This project showcases the implementation of Conway's Game of Life using Test Driven Development (TDD). The game logic was built out using TDD principles, with Mocha as the testing framework and Chai.js for assertions. Additionally, React was utilized for the visualization of the game, providing an interactive and dynamic user experience.
 
 ## Table of Contents
