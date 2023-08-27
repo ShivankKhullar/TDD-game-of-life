@@ -20,15 +20,35 @@ const glider = [
   [DEAD, DEAD, DEAD, ALIVE, DEAD, ...Array(25).fill(DEAD)],
   [DEAD, ALIVE, ALIVE, ALIVE, DEAD, ...Array(25).fill(DEAD)],
   [DEAD, DEAD, DEAD, DEAD, DEAD, ...Array(25).fill(DEAD)],
-  ...Array(7).fill([...Array(30).fill(DEAD)]),
+  ...Array(10).fill([...Array(30).fill(DEAD)]),
 ];
 
 const bigBoard = [
-  ...Array(36).fill([...Array(36).fill(DEAD)]),
+  [DEAD, DEAD, DEAD, DEAD, DEAD, ...Array(31).fill(DEAD)],
+  [DEAD, DEAD, ALIVE, DEAD, DEAD, ...Array(31).fill(DEAD)],
+  [DEAD, DEAD, DEAD, ALIVE, DEAD, ...Array(31).fill(DEAD)],
+  [DEAD, ALIVE, ALIVE, ALIVE, DEAD, ...Array(31).fill(DEAD)],
+  [DEAD, DEAD, DEAD, DEAD, DEAD, ...Array(31).fill(DEAD)],
+  [DEAD, DEAD, DEAD, DEAD, DEAD, ...Array(31).fill(DEAD)],
+  [DEAD, DEAD, ALIVE, DEAD, DEAD, ...Array(31).fill(DEAD)],
+  [DEAD, DEAD, DEAD, ALIVE, DEAD, ...Array(31).fill(DEAD)],
+  [DEAD, ALIVE, ALIVE, ALIVE, DEAD, ...Array(31).fill(DEAD)],
+  [DEAD, DEAD, DEAD, DEAD, DEAD, ...Array(31).fill(DEAD)],
+  ...Array(20).fill([...Array(36).fill(DEAD)]),
 ];
 
 const smallBoard = [
-  ...Array(20).fill([...Array(17).fill(DEAD)]),
+  [DEAD, DEAD, DEAD, DEAD, DEAD, ...Array(12).fill(DEAD)],
+  [DEAD, DEAD, ALIVE, DEAD, DEAD, ...Array(12).fill(DEAD)],
+  [DEAD, DEAD, DEAD, ALIVE, DEAD, ...Array(12).fill(DEAD)],
+  [DEAD, ALIVE, ALIVE, ALIVE, DEAD, ...Array(12).fill(DEAD)],
+  [DEAD, DEAD, DEAD, DEAD, DEAD, ...Array(12).fill(DEAD)],
+  [DEAD, DEAD, DEAD, DEAD, DEAD, ...Array(12).fill(DEAD)],
+  [DEAD, DEAD, ALIVE, DEAD, DEAD, ...Array(12).fill(DEAD)],
+  [DEAD, DEAD, DEAD, ALIVE, DEAD, ...Array(12).fill(DEAD)],
+  [DEAD, ALIVE, ALIVE, ALIVE, DEAD, ...Array(12).fill(DEAD)],
+  [DEAD, DEAD, DEAD, DEAD, DEAD, ...Array(12).fill(DEAD)],
+  ...Array(10).fill([...Array(17).fill(DEAD)]),
 ];
 
 
