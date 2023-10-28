@@ -3,11 +3,9 @@
 import React, { useState, useRef, useEffect} from 'react';
 import './GameTable.css';
 import CellState from './game-logic/CellState';
-import Cell from './game-logic/Cell';
 import Game from './game-logic/Game';
 
-
-
+// Defining initial states for the Game of Life patterns
 const { ALIVE, DEAD } = CellState;
 const glider = [
   [DEAD, DEAD, DEAD, DEAD, DEAD, ...Array(25).fill(DEAD)],
@@ -51,9 +49,11 @@ const smallBoard = [
   ...Array(10).fill([...Array(17).fill(DEAD)]),
 ];
 
-
+// Main component to render the Game of Life table and controls
 function GameTable() {
   const [boardSize, setBoardSize] = useState(window.innerWidth <= 768 ? 'small' : 'big');
+  
+  // Effect to handle window resizing events
   useEffect(() => {
     const handleResize = () => {
       setBoardSize(prevSize => {
